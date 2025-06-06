@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>動画確認ページ</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        video {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            display: block;
+            margin: 0 auto 20px;
+        }
+        #btnContainer {
+            display: none;
+            margin-top: 20px;
+        }
+        #voteBtn {
+            padding: 16px 32px;
+            font-size: 1.2em;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 80%;
+            max-width: 300px;
+        }
+        #voteBtn:hover {
+            background-color: #0056b3;
+        }
+
+        /* モバイル対応 */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.2em;
+            }
+            #voteBtn {
+                font-size: 1em;
+                padding: 14px 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>動画全部見たら投票できるよ ^ ^</h1>
+
+    <video id="video" controls preload="auto">
+        <source src="{{ url_for('static', filename='test.mp4') }}" type="video/mp4">
+        この動画は再生できません。
+    </video>
+
+    <div id="btnContainer">
+        <button id="voteBtn" onclick="window.location.href='https://www.youtube.com/watch?v=nJaFpoo9Fl0'">
+            投票ページへ進む
+        </button>
+    </div>
+
+    <script>
+        const video = document.getElementById("video");
+        const btnContainer = document.getElementById("btnContainer");
+
+        video.addEventListener("ended", function () {
+            btnContainer.style.display = "block";
+        });
+    </script>
+</body>
+</html>
