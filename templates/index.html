@@ -1,81 +1,81 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>動画確認ページ</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            text-align: center;
-            padding: 20px;
-            background-color: #f9f9f9;
-        }
-        h1 {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            color: #333;
-        }
-        video {
-            width: 100%;
-            max-width: 600px;
-            height: auto;
-            display: block;
-            margin: 0 auto 20px;
-        }
-        #btnContainer {
-            display: none;
-            margin-top: 20px;
-        }
-        #voteBtn {
-            padding: 16px 32px;
-            font-size: 1.2em;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            width: 80%;
-            max-width: 300px;
-        }
-        #voteBtn:hover {
-            background-color: #0056b3;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>動画を最後まで見てね</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
 
-        /* モバイル対応 */
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.2em;
-            }
-            #voteBtn {
-                font-size: 1em;
-                padding: 14px 28px;
-            }
-        }
-    </style>
+    .message {
+      font-size: 1.5rem;
+      margin-top: 20px;
+      color: #333;
+    }
+
+    .video-container {
+      max-width: 90%;
+      margin: 20px auto;
+      position: relative;
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+      pointer-events: none; /* ユーザー操作を禁止 */
+    }
+
+    .button-container {
+      margin-top: 30px;
+      display: none;
+    }
+
+    .button-container button {
+      background-color: #28a745;
+      color: white;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s;
+    }
+
+    .button-container button:hover {
+      background-color: #218838;
+    }
+  </style>
 </head>
 <body>
-    <h1>動画全部見たら投票できるよ ^ ^</h1>
 
-    <video id="video" controls preload="auto">
-        <source src="{{ url_for('static', filename='test.mp4') }}" type="video/mp4">
-        この動画は再生できません。
+  <div class="message">🎬 動画全部見たら投票できるよ ^ ^</div>
+
+  <div class="video-container">
+    <video id="myVideo" autoplay muted playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback">
+      <source src="{{ url_for('static', filename='test.mp4') }}" type="video/mp4">
+      お使いのブラウザは動画をサポートしていません。
     </video>
+  </div>
 
-    <div id="btnContainer">
-        <button id="voteBtn" onclick="window.location.href='https://www.youtube.com/watch?v=nJaFpoo9Fl0'">
-            投票ページへ進む
-        </button>
-    </div>
+  <div class="button-container" id="voteButton">
+    <button onclick="window.location.href='https://www.youtube.com/watch?v=nJaFpoo9Fl0'">投票する</button>
+  </div>
 
-    <script>
-        const video = document.getElementById("video");
-        const btnContainer = document.getElementById("btnContainer");
+  <script>
+    const video = document.getElementById("myVideo");
+    const voteButton = document.getElementById("voteButton");
 
-        video.addEventListener("ended", function () {
-            btnContainer.style.display = "block";
-        });
-    </script>
+    video.addEventListener("ended", () => {
+      voteButton.style.display = "block";
+    });
+  </script>
+
 </body>
 </html>
