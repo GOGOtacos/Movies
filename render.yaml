@@ -1,7 +1,6 @@
 services:
   - type: web
-    name: flask-video-app
+    name: video-vote-app
     env: python
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn app:app"
-    plan: free
+    buildCommand: ""
+    startCommand: "python app.py"

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>動画でパスワードを探そう！</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>動画の中にパスワードが隠されてるよ！</h1>
+        <p>最後までしっかり見て探してみてね。</p>
+        <a class="button" href="https://drive.google.com/file/d/1T3DXv9ar2wfgdnJiQioVvocnk_noKMLu/view?usp=drive_link" target="_blank">🎥 動画を見に行く</a>
+        <p style="margin-top: 20px;">パスワードを見つけたら、<a href="{{ url_for('password') }}">ここから入力</a>してね。</p>
+    </div>
+</body>
+</html>
