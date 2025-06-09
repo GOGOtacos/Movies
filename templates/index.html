@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>動画クイズ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>動画を見よう！</h1>
+        <a href="https://drive.google.com/file/d/1NqatvT3PvBrE1Jsc2Evzz91WCCyCPRdt/view?usp=sharing" target="_blank">
+            <button>動画を見る</button>
+        </a>
+        <form action="/check" method="post">
+            <div class="question">動画の最後の作品はどれだ？</div>
+            <label><input type="radio" name="movie" value="インサイドヘッド" required> インサイドヘッド</label><br>
+            <label><input type="radio" name="movie" value="夏へのトンネルさよならの出口"> 夏へのトンネルさよならの出口</label><br>
+            <label><input type="radio" name="movie" value="小さな恋の歌"> 小さな恋の歌</label><br><br>
+            <input type="submit" value="回答する">
+        </form>
+    </div>
+</body>
+</html>
